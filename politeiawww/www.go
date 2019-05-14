@@ -266,8 +266,8 @@ func _main() error {
 	log.Infof("Home dir: %v", loadedCfg.HomeDir)
 
 	if loadedCfg.PaywallAmount != 0 && loadedCfg.PaywallXpub != "" {
-		paywallAmountInDcr := float64(loadedCfg.PaywallAmount) / 1e8
-		log.Infof("Paywall : %v FNO", paywallAmountInDcr)
+		paywallAmountInFno := float64(loadedCfg.PaywallAmount) / 1e8
+		log.Infof("Paywall : %v FNO", paywallAmountInFno)
 	} else if loadedCfg.PaywallAmount == 0 && loadedCfg.PaywallXpub == "" {
 		log.Infof("Paywall : DISABLED")
 	} else {

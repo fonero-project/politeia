@@ -40,23 +40,23 @@ func (p *politeiawww) GetMonthAverage(month time.Month, year int) (uint, error) 
 	}
 
 	// Create a map of unix timestamps => average price
-	usdtDcrPrices := make(map[uint64]float64)
+	usdtFnoPrices := make(map[uint64]float64)
 
 	// Select only timestamps which appear in both charts to
 	// populate the result set. Multiply BTC/FNO rate by
 	// USDT/BTC rate to get USDT/FNO rate.
 	for timestamp, fno := range fnoPrices {
 		if btc, ok := btcPrices[timestamp]; ok {
-			usdtDcrPrices[timestamp] = fno * btc
+			usdtFnoPrices[timestamp] = fno * btc
 		}
 	}
 
 	// Calculate and return the average of all USDT/FNO prices
 	var average float64
-	for _, price := range usdtDcrPrices {
+	for _, price := range usdtFnoPrices {
 		average += price
 	}
-	average = average / float64(len(usdtDcrPrices))
+	average = average / float64(len(usdtFnoPrices))
 
 	return uint(math.Round(average * 100)), nil
 }

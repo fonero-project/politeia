@@ -31,7 +31,7 @@ const (
 	insightMainnet = "https://mainnet.fonero.org/insight/api"
 	insightTestnet = "https://testnet.fonero.org/insight/api"
 
-	fnodataTimeout = 3 * time.Second // Dcrdata request timeout
+	fnodataTimeout = 3 * time.Second // Fnodata request timeout
 	faucetTimeout  = 5 * time.Second // Testnet faucet request timeout
 )
 
@@ -126,9 +126,9 @@ func makeRequest(url string, timeout time.Duration) ([]byte, error) {
 	return ioutil.ReadAll(response.Body)
 }
 
-// DcrStringToAmount converts a FNO amount as a string into a uint64
+// FnoStringToAmount converts a FNO amount as a string into a uint64
 // representing atoms. Supported input variations: "1", ".1", "0.1"
-func DcrStringToAmount(fnostr string) (uint64, error) {
+func FnoStringToAmount(fnostr string) (uint64, error) {
 	match, err := regexp.MatchString("(\\d*\\.)*\\d+", fnostr)
 	if err != nil {
 		return 0, err
@@ -203,7 +203,7 @@ func fetchTxWithPrimaryBE(url string, address string, minimumAmount uint64, txno
 		}
 
 		for _, vout := range v.Vout {
-			amount, err := DcrStringToAmount(vout.Amount.String())
+			amount, err := FnoStringToAmount(vout.Amount.String())
 			if err != nil {
 				return "", 0, err
 			}
@@ -243,7 +243,7 @@ func fetchTxWithBackupBE(url string, address string, minimumAmount uint64, txnot
 			continue
 		}
 
-		amount, err := DcrStringToAmount(v.Amount.String())
+		amount, err := FnoStringToAmount(v.Amount.String())
 		if err != nil {
 			return "", 0, err
 		}
@@ -437,7 +437,7 @@ func fetchTxsWithBackupBE(url string) ([]BEBackupTransaction, error) {
 func convertBEPrimaryTransactionToTxDetails(address string, tx BEPrimaryTransaction) (*TxDetails, error) {
 	var amount uint64
 	for _, vout := range tx.Vout {
-		amt, err := DcrStringToAmount(vout.Amount.String())
+		amt, err := FnoStringToAmount(vout.Amount.String())
 		if err != nil {
 			return nil, err
 		}
@@ -459,7 +459,7 @@ func convertBEPrimaryTransactionToTxDetails(address string, tx BEPrimaryTransact
 }
 
 func convertBEBackupTransactionToTxDetails(tx BEBackupTransaction) (*TxDetails, error) {
-	amount, err := DcrStringToAmount(tx.Amount.String())
+	amount, err := FnoStringToAmount(tx.Amount.String())
 	if err != nil {
 		return nil, err
 	}
@@ -555,7 +555,7 @@ func FetchTxsForAddressNotBefore(address string, notBefore int64) ([]TxDetails, 
 			"/skip/" + strconv.Itoa(skip) + "/raw"
 		fnodataTxs, err := fetchTxsWithPrimaryBE(url)
 		if err != nil {
-			return nil, fmt.Errorf("fetchDcrdataAddress: %v", err)
+			return nil, fmt.Errorf("fetchFnodataAddress: %v", err)
 		}
 
 		// Convert transactions to TxDetails

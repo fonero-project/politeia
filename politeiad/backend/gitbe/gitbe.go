@@ -122,7 +122,7 @@ type gitBackEnd struct {
 	unvetted        string           // Unvettend content
 	vetted          string           // Vetted, public, visible content
 	journals        string           // Journals/cache
-	fnotimeHost     string           // Dcrtimed directory
+	fnotimeHost     string           // Fnotimed directory
 	gitPath         string           // Path to git
 	gitTrace        bool             // Enable git tracing
 	test            bool             // Set during UT
@@ -761,7 +761,7 @@ func (g *gitBackEnd) anchorRepo(path string) (*[sha256.Size]byte, error) {
 
 	// Append MerkleRoot to digests.  We have to do this since this is
 	// politeia's lookup key but fnotime will likely return a different
-	// merkle.  Dcrtime returns a different merkle when there are
+	// merkle.  Fnotime returns a different merkle when there are
 	// additional digests in the set.
 	digests = append(digests, anchorKey)
 

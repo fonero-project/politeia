@@ -1096,16 +1096,16 @@ func _main() error {
 
 	// Load certs, if there.  If they aren't there assume OS is used to
 	// resolve cert validity.
-	if len(loadedCfg.DcrtimeCert) != 0 {
+	if len(loadedCfg.FnotimeCert) != 0 {
 		var certPool *x509.CertPool
-		if !util.FileExists(loadedCfg.DcrtimeCert) {
+		if !util.FileExists(loadedCfg.FnotimeCert) {
 			return fmt.Errorf("unable to find fnotime cert %v",
-				loadedCfg.DcrtimeCert)
+				loadedCfg.FnotimeCert)
 		}
-		fnotimeCert, err := ioutil.ReadFile(loadedCfg.DcrtimeCert)
+		fnotimeCert, err := ioutil.ReadFile(loadedCfg.FnotimeCert)
 		if err != nil {
 			return fmt.Errorf("unable to read fnotime cert %v: %v",
-				loadedCfg.DcrtimeCert, err)
+				loadedCfg.FnotimeCert, err)
 		}
 		certPool = x509.NewCertPool()
 		if !certPool.AppendCertsFromPEM(fnotimeCert) {
@@ -1116,7 +1116,7 @@ func _main() error {
 	// Setup backend.
 	gitbe.UseLogger(gitbeLog)
 	b, err := gitbe.New(activeNetParams.Params, loadedCfg.DataDir,
-		loadedCfg.DcrtimeHost, "", p.identity, loadedCfg.GitTrace)
+		loadedCfg.FnotimeHost, "", p.identity, loadedCfg.GitTrace)
 	if err != nil {
 		return err
 	}

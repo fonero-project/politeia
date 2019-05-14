@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestDcrStringToAmount(t *testing.T) {
+func TestFnoStringToAmount(t *testing.T) {
 	testCases := []struct {
 		input         string
 		output        uint64
@@ -54,7 +54,7 @@ func TestDcrStringToAmount(t *testing.T) {
 
 	// test
 	for _, testCase := range testCases {
-		result, err := util.DcrStringToAmount(testCase.input)
+		result, err := util.FnoStringToAmount(testCase.input)
 		if err != testCase.expectedError {
 			t.Errorf("Expected %v for input %s, got %v.",
 				testCase.expectedError, testCase.input, err)

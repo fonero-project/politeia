@@ -75,8 +75,8 @@ type config struct {
 	HTTPSKey      string `long:"httpskey" description:"File containing the https certificate key"`
 	RPCUser       string `long:"rpcuser" description:"RPC user name for privileged commands"`
 	RPCPass       string `long:"rpcpass" description:"RPC password for privileged commands"`
-	DcrtimeHost   string `long:"fnotimehost" description:"Dcrtime ip:port"`
-	DcrtimeCert   string `long:"fnotimecert" description:"File containing the https certificate file for fnotimehost"`
+	FnotimeHost   string `long:"fnotimehost" description:"Fnotime ip:port"`
+	FnotimeCert   string `long:"fnotimecert" description:"File containing the https certificate file for fnotimehost"`
 	EnableCache   bool   `long:"enablecache" description:"Enable the external cache"`
 	CacheHost     string `long:"cachehost" description:"Cache ip:port"`
 	CacheRootCert string `long:"cacherootcert" description:"File containing the CA certificate for the cache"`
@@ -543,37 +543,37 @@ func loadConfig() (*config, []string, error) {
 
 	if cfg.TestNet {
 		var timeHost string
-		if len(cfg.DcrtimeHost) == 0 {
+		if len(cfg.FnotimeHost) == 0 {
 			timeHost = v1.DefaultTestnetTimeHost
 		} else {
-			timeHost = cfg.DcrtimeHost
+			timeHost = cfg.FnotimeHost
 		}
-		cfg.DcrtimeHost = util.NormalizeAddress(timeHost,
+		cfg.FnotimeHost = util.NormalizeAddress(timeHost,
 			v1.DefaultTestnetTimePort)
 	} else {
 		var timeHost string
-		if len(cfg.DcrtimeHost) == 0 {
+		if len(cfg.FnotimeHost) == 0 {
 			timeHost = v1.DefaultMainnetTimeHost
 		} else {
-			timeHost = cfg.DcrtimeHost
+			timeHost = cfg.FnotimeHost
 		}
-		cfg.DcrtimeHost = util.NormalizeAddress(timeHost,
+		cfg.FnotimeHost = util.NormalizeAddress(timeHost,
 			v1.DefaultMainnetTimePort)
 	}
-	cfg.DcrtimeHost = "https://" + cfg.DcrtimeHost
+	cfg.FnotimeHost = "https://" + cfg.FnotimeHost
 
-	if len(cfg.DcrtimeCert) != 0 && !util.FileExists(cfg.DcrtimeCert) {
-		cfg.DcrtimeCert = cleanAndExpandPath(cfg.DcrtimeCert)
-		path := filepath.Join(cfg.HomeDir, cfg.DcrtimeCert)
+	if len(cfg.FnotimeCert) != 0 && !util.FileExists(cfg.FnotimeCert) {
+		cfg.FnotimeCert = cleanAndExpandPath(cfg.FnotimeCert)
+		path := filepath.Join(cfg.HomeDir, cfg.FnotimeCert)
 		if !util.FileExists(path) {
-			str := "%s: fnotimecert " + cfg.DcrtimeCert + " and " +
+			str := "%s: fnotimecert " + cfg.FnotimeCert + " and " +
 				path + " don't exist"
 			err := fmt.Errorf(str, funcName)
 			fmt.Fprintln(os.Stderr, err)
 			return nil, nil, err
 		}
 
-		cfg.DcrtimeCert = path
+		cfg.FnotimeCert = path
 	}
 
 	if cfg.Identity == "" {
