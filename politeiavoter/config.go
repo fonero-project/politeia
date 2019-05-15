@@ -316,7 +316,7 @@ func loadConfig() (*config, []string, error) {
 	// while we're at it
 	activeNetParams = &mainNetParams
 	if cfg.TestNet {
-		activeNetParams = &testNet3Params
+		activeNetParams = &testNetParams
 	}
 	// Determine default connections
 	if cfg.PoliteiaWWW == "" {

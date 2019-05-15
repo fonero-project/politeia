@@ -50,7 +50,7 @@ func _main() error {
 	// Set data directory
 	activeNet := chaincfg.MainNetParams.Name
 	if *testnet {
-		activeNet = chaincfg.TestNet3Params.Name
+		activeNet = chaincfg.TestNetParams.Name
 	}
 
 	dataDir := filepath.Join(util.CleanAndExpandPath(*homeDir),

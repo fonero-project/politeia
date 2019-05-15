@@ -248,7 +248,7 @@ func newTestPoliteiawww(t *testing.T) (*politeiawww, func()) {
 		cfg:             cfg,
 		db:              db,
 		cache:           testcache.New(),
-		params:          &chaincfg.TestNet3Params,
+		params:          &chaincfg.TestNetParams,
 		router:          mux.NewRouter(),
 		store:           store,
 		smtp:            smtp,

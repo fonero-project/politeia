@@ -30,7 +30,7 @@ fi
 
 # Database names
 readonly DB_MAINNET="users_mainnet"
-readonly DB_TESTNET="users_testnet3"
+readonly DB_TESTNET="users_testnet"
 
 # Database usernames
 readonly USER_POLITEIAWWW="politeiawww"

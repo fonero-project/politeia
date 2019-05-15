@@ -33,13 +33,13 @@ var mainNetParams = params{
 	WalletRPCServerPort: netparams.MainNetParams.GRPCServerPort,
 }
 
-// testNet3Params contains parameters specific to the test network (version 0)
+// testNetParams contains parameters specific to the test network (version 0)
 // (wire.TestNet).  NOTE: The RPC port is intentionally different than the
 // reference implementation - see the mainNetParams comment for details.
 
-var testNet3Params = params{
-	Params:              &chaincfg.TestNet3Params,
-	WalletRPCServerPort: netparams.TestNet3Params.GRPCServerPort,
+var testNetParams = params{
+	Params:              &chaincfg.TestNetParams,
+	WalletRPCServerPort: netparams.TestNetParams.GRPCServerPort,
 }
 
 // simNetParams contains parameters specific to the simulation test network
@@ -60,8 +60,8 @@ var simNetParams = params{
 // removed and the network parameter's name used instead.
 func netName(chainParams *params) string {
 	switch chainParams.Net {
-	case wire.TestNet3:
-		return "testnet3"
+	case wire.TestNet:
+		return "testnet"
 	default:
 		return chainParams.Name
 	}

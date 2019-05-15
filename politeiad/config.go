@@ -415,7 +415,7 @@ func loadConfig() (*config, []string, error) {
 	activeNetParams = &mainNetParams
 	if cfg.TestNet {
 		numNets++
-		activeNetParams = &testNet3Params
+		activeNetParams = &testNetParams
 		port = defaultTestnetPort
 	}
 	if cfg.SimNet {

@@ -30,7 +30,7 @@ fi
 
 # Database names.
 readonly DB_MAINNET="records_mainnet"
-readonly DB_TESTNET="records_testnet3"
+readonly DB_TESTNET="records_testnet"
 
 # Database usernames.
 readonly USER_POLITEIAD="politeiad"

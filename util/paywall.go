@@ -171,7 +171,7 @@ func blockExplorerURLForAddress(address string, netParams *chaincfg.Params) (str
 	case &chaincfg.MainNetParams:
 		fnodata = fnodataMainnet + "/address/" + address
 		insight = insightMainnet + "/addr/" + address
-	case &chaincfg.TestNet3Params:
+	case &chaincfg.TestNetParams:
 		fnodata = fnodataTestnet + "/address/" + address
 		insight = insightTestnet + "/addr/" + address
 	default:
@@ -299,7 +299,7 @@ func PayWithTestnetFaucet(faucetURL string, address string, amount uint64, overr
 		return "", fmt.Errorf("address is invalid: %v", err)
 	}
 
-	if !fnoaddress.IsForNet(&chaincfg.TestNet3Params) {
+	if !fnoaddress.IsForNet(&chaincfg.TestNetParams) {
 		return "", fmt.Errorf("faucet only supports testnet")
 	}
 

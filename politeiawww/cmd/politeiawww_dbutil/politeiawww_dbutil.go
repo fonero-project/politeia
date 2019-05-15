@@ -82,7 +82,7 @@ var (
 	migrate    = flag.Bool("migrate", false, "")
 	createKey  = flag.Bool("createkey", false, "")
 
-	network string // Mainnet or testnet3
+	network string // Mainnet or testnet
 	// XXX ldb should be abstracted away. dbutil commands should use
 	// the user.Database interface instead.
 	ldb    *leveldb.DB
@@ -763,7 +763,7 @@ func _main() error {
 	*encryptionKey = util.CleanAndExpandPath(*encryptionKey)
 
 	if *testnet {
-		network = chaincfg.TestNet3Params.Name
+		network = chaincfg.TestNetParams.Name
 	} else {
 		network = chaincfg.MainNetParams.Name
 	}

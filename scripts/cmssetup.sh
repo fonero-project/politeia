@@ -29,7 +29,7 @@ fi
 
 # Database names.
 readonly DB_MAINNET="cms_mainnet"
-readonly DB_TESTNET="cms_testnet3"
+readonly DB_TESTNET="cms_testnet"
 
 # Database usernames.
 readonly 	USER_POLITEIAWWW="politeiawww" 
