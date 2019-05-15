@@ -26,8 +26,8 @@ import (
 )
 
 const (
-	fnodataMainnet = "https://explorer.fnodata.org/api"
-	fnodataTestnet = "https://testnet.fnodata.org/api"
+	fnodataMainnet = "https://explorer.fonero.org/api"
+	fnodataTestnet = "https://testnet.fonero.org/api"
 	insightMainnet = "https://mainnet.fonero.org/insight/api"
 	insightTestnet = "https://testnet.fonero.org/insight/api"
 
