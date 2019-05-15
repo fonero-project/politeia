@@ -169,14 +169,14 @@ func getFoneroPlugin(testnet bool) backend.Plugin {
 		foneroPlugin.Settings = append(foneroPlugin.Settings,
 			backend.PluginSetting{
 				Key:   "fnodata",
-				Value: "https://testnet.fnodata.org:443/",
+				Value: "https://testnet.fonero.org:443/",
 			},
 		)
 	} else {
 		foneroPlugin.Settings = append(foneroPlugin.Settings,
 			backend.PluginSetting{
 				Key:   "fnodata",
-				Value: "https://explorer.fnodata.org:443/",
+				Value: "https://explorer.fonero.org:443/",
 			})
 	}
 
