@@ -8,9 +8,6 @@ require (
 	github.com/btcsuite/golangcrypto v0.0.0-20150304025918-53f62d9b43e8
 	github.com/dajohi/goemail v1.0.0
 	github.com/davecgh/go-spew v1.1.1
-	github.com/fonero-project/fnod v0.0.0-20190514051128-48e51dacc4c3
-	github.com/fonero-project/fnowallet v0.0.0-20190514102610-e703aeeabc44
-	github.com/fonero-project/fnotime v0.0.0-20190514170004-60b1a1ff94f0
 	github.com/decred/slog v1.0.0
 	github.com/denisenkom/go-mssqldb v0.0.0-20190315220205-a8ed825ac853 // indirect
 	github.com/dgryski/go-farm v0.0.0-20190323231341-8198c7b169ec // indirect
